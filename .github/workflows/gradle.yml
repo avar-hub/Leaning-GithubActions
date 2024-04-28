@@ -27,3 +27,16 @@ jobs:
     - name: Build with Gradle
       run: gradle clean build
 
+#       Till here we have build and test my code
+
+#https://github:com/marketplace/actions/docker-build-push-action:
+
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+          image: avarm01/Leaning-GithubActions
+          tags: latest
+          registry: registry-url.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
